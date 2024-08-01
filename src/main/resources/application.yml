@@ -1,8 +1,6 @@
 
 server:
   port: 8090
-  servlet:
-    context-path: /v1
 
 spring:
   application:
@@ -10,13 +8,13 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/spbLearn3_db
+    url: jdbc:postgresql://localhost:5432/SB_CRUD_SAMPLE
     username: postgres
     password: postgres
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
     properties:
       hibernate:
