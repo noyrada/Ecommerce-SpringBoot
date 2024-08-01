@@ -2,7 +2,6 @@ package com.project.samplecrud_sb.model.request;
 
 
 import com.project.samplecrud_sb.model.entity.CategoryEntity;
-import com.project.samplecrud_sb.model.response.category.CategoryResponse;
 
 import java.io.Serializable;
 
