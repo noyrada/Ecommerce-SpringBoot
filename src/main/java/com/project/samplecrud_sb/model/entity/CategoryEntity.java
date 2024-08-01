@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "categories")
-public class CategoryEntity {
+public class CategoryEntity<C> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +51,7 @@ public class CategoryEntity {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        CategoryEntity that = (CategoryEntity) o;
+        CategoryEntity<?> that = (CategoryEntity<?>) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
