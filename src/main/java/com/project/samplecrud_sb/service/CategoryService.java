@@ -19,4 +19,11 @@ public class CategoryService {
     public CategoryEntity create(CategoryRequest request){
         return this.categoryRepository.save(request.toEntity());
     }
+
+/*
+    public CategoryEntity update(CategoryRequest request){
+
+    }
+*/
+
 }
