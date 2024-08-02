@@ -1,8 +1,6 @@
 package com.project.samplecrud_sb.model.request;
 
-
 import com.project.samplecrud_sb.model.entity.CategoryEntity;
-
 import java.io.Serializable;
 
 public class CategoryRequest implements Serializable {
@@ -17,7 +15,6 @@ public class CategoryRequest implements Serializable {
 
     public CategoryEntity toEntity(){
         CategoryEntity categoryEntity = new CategoryEntity();
-
         categoryEntity.setName(this.name);
         categoryEntity.setDescription(this.description);
         return categoryEntity;

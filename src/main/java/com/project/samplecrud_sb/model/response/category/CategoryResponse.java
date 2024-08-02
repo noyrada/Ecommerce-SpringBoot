@@ -1,8 +1,6 @@
 package com.project.samplecrud_sb.model.response.category;
 
-
 import com.project.samplecrud_sb.model.entity.CategoryEntity;
-
 import java.io.Serializable;
 
 public class CategoryResponse implements Serializable {
