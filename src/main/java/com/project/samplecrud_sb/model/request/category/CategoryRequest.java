@@ -1,4 +1,4 @@
-package com.project.samplecrud_sb.model.request;
+package com.project.samplecrud_sb.model.request.category;
 
 import com.project.samplecrud_sb.model.entity.CategoryEntity;
 import java.io.Serializable;
@@ -26,5 +26,13 @@ public class CategoryRequest implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
