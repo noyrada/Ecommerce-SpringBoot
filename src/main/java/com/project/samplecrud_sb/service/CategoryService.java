@@ -8,6 +8,8 @@ import com.project.samplecrud_sb.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryService {
 
@@ -53,14 +55,20 @@ public class CategoryService {
         //foundData.setName(request.getName() == null ? foundData.getName() : request.getName());
         //foundData.setDescription(request.getDescription() == null ? foundData.getDescription() : request.getDescription());
 
-        //update entity:
         try {
-            //save entity
+            //update entity:
             return this.categoryRepository.save(foundData);
         }catch (Exception ex){
             throw new Exception(ex);
         }
+    }
 
+    public List<CategoryEntity> findAll(){
+        return this.categoryRepository.findAll();
+    }
+
+    public CategoryEntity findOne(Long id) throws NotFoundException{
+        return this.categoryRepository.findById(id).orElseThrow(() -> new NotFoundException("Category not found!"));
     }
 
 }
