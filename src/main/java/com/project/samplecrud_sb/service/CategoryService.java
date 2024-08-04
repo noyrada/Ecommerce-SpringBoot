@@ -71,4 +71,19 @@ public class CategoryService {
         return this.categoryRepository.findById(id).orElseThrow(() -> new NotFoundException("Category not found!"));
     }
 
+    public CategoryEntity delete(Long id) throws Exception{
+
+        //get data by id onto database
+        CategoryEntity category = this.findOne(id);
+
+        try {
+            //if everything well will delete
+            this.categoryRepository.deleteById(category.getId());
+        }catch (Exception ex){
+            throw new Exception(ex);
+        }
+
+        return category;
+    }
+
 }

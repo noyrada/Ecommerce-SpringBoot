@@ -9,4 +9,5 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity,Long> {
 
     //JPQL = Java persistence Queries Language
     boolean existsByName(String name);
+
 }
