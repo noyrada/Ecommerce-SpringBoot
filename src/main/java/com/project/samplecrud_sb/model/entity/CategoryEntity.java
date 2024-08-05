@@ -1,5 +1,6 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.model.entity.listener.CategoryEntityListener;
 import jakarta.persistence.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -7,6 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "categories")
+@EntityListeners(CategoryEntityListener.class)
 public class CategoryEntity{
 
     @Id
@@ -59,4 +61,54 @@ public class CategoryEntity{
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
+    //jpa entities lifecycle events:
+//    @PrePersist
+//    public void beforeSave(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("Before Category persisted Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
+//
+//    @PostPersist
+//    public void afterSave(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("After Category persisted Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
+//
+//    @PreUpdate
+//    public void beforeUpdate(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("Before Category Merged Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
+//
+//    @PostUpdate
+//    public void afterUpdate(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("After Category Merged Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
+//
+//    @PreRemove
+//    public void beforeRemove(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("Before Category Removed Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
+//
+//    @PostRemove
+//    public void afterRemove(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("After Category Removed Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
+//
+//    @PostLoad
+//    public void load(){
+//        Logger log = Logger.getLogger(this.getClass().getName());
+//        log.info("After Category Loaded Id:"+this.getId()+"  Name:"+this.getName()+" and Description:"+
+//                this.getDescription());
+//    }
 }
