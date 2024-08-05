@@ -5,7 +5,6 @@ import com.project.samplecrud_sb.model.entity.CategoryEntity;
 import com.project.samplecrud_sb.model.request.category.CategoryRequest;
 import com.project.samplecrud_sb.model.response.category.CategoryResponse;
 import com.project.samplecrud_sb.service.CategoryService;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
