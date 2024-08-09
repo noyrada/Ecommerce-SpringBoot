@@ -2,6 +2,9 @@ package com.project.samplecrud_sb.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Table(name = "posts")
 public class PostEntity {
@@ -15,6 +18,10 @@ public class PostEntity {
 
     @Column(length = 500,nullable = false)
     private String description;
+
+    //One to Many Relational:
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<PostCommentEntity> postComments;
 
     public String getTitle() {
         return title;
@@ -38,5 +45,18 @@ public class PostEntity {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PostEntity that = (PostEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(postComments, that.postComments);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, postComments);
     }
 }
