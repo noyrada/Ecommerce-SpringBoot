@@ -11,6 +11,11 @@ public class UserRegisterRequest implements Serializable {
 
     private AddressRequest address;
 
+    public UserRegisterRequest(String username, AddressRequest address) {
+        this.username = username;
+        this.address = address;
+    }
+
     public AddressRequest getAddress() {
         return address;
     }

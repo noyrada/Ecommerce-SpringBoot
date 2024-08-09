@@ -1,8 +1,8 @@
 package com.project.samplecrud_sb.exceptions;
 
-public class NotFoundException extends Exception{
+public class BadRequestException extends Exception{
 
-    public NotFoundException(String message) {
+    public BadRequestException(String message) {
         super(message);
     }
 }

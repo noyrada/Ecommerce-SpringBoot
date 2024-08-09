@@ -13,8 +13,19 @@ public class UserEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(length = 255,nullable = false)
+    @Column(length = 255, nullable = false)
     private String username;
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+    private AddressEntity address;
+
+    public AddressEntity getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;

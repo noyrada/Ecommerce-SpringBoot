@@ -17,7 +17,7 @@ public class AddressEntity {
     private String address;
 
     @OneToOne
-    @JoinColumn(name = "UserId",nullable = false,referencedColumnName = "id")
+    @JoinColumn(name = "userId",nullable = false,referencedColumnName = "id")
     private UserEntity user;
 
     public UserEntity getUser() {

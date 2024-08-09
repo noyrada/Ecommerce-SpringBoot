@@ -64,14 +64,17 @@ public class CategoryService {
         }
     }
 
+    // find all data from database:
     public List<CategoryEntity> findAll(){
         return this.categoryRepository.findAll();
     }
 
+    // find One data from database by id:
     public CategoryEntity findOne(Long id) throws NotFoundException{
         return this.categoryRepository.findById(id).orElseThrow(() -> new NotFoundException("Category not found!"));
     }
 
+    // delete method:
     public CategoryEntity delete(Long id) throws Exception{
 
         //get data by id onto database

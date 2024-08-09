@@ -1,7 +1,11 @@
 package com.project.samplecrud_sb.controller;
 
+import com.project.samplecrud_sb.exceptions.BadRequestException;
 import com.project.samplecrud_sb.model.entity.UserEntity;
+import com.project.samplecrud_sb.model.request.user.UserLoginRequest;
 import com.project.samplecrud_sb.model.request.user.UserRegisterRequest;
+import com.project.samplecrud_sb.model.response.user.UserLoginResponse;
+import com.project.samplecrud_sb.model.response.user.UserRegisterResponse;
 import com.project.samplecrud_sb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +25,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserEntity> register(@RequestBody UserRegisterRequest request) throws Exception{
+    public ResponseEntity<UserRegisterResponse> register(@RequestBody UserRegisterRequest request) throws Exception{
         UserEntity user = this.userService.register(request);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(UserRegisterResponse.fromEntity(user));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserLoginResponse> login(@RequestBody UserLoginRequest request) throws Exception {
+        UserEntity user = this.userService.login(request);
+        return ResponseEntity.ok(UserLoginResponse.fromEntity(user));
     }
 }
