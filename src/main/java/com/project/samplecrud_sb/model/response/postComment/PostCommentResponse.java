@@ -1,7 +1,6 @@
 package com.project.samplecrud_sb.model.response.postComment;
 
 import com.project.samplecrud_sb.model.entity.PostCommentEntity;
-
 import java.io.Serializable;
 
 public class PostCommentResponse implements Serializable {
@@ -25,5 +24,13 @@ public class PostCommentResponse implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

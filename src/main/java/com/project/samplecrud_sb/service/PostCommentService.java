@@ -9,6 +9,8 @@ import com.project.samplecrud_sb.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostCommentService {
 
@@ -40,7 +42,12 @@ public class PostCommentService {
         }catch (Exception ex){
             throw new Exception(ex);
         }
+    }
 
+    //find all data with id's post into db:
+    public List<PostCommentEntity> findAll(Long postId){
+        if(postId == null) return this.postCommentRepository.findAll();
+        else return this.postCommentRepository.findAllByPostId(postId);
     }
 
 
