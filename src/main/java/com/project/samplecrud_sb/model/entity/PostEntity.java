@@ -20,7 +20,7 @@ public class PostEntity {
     private String description;
 
     //One to Many Relational:
-    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     private List<PostCommentEntity> postComments;
 
     public String getTitle() {

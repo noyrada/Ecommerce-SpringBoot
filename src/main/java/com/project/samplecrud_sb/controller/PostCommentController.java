@@ -1,8 +1,10 @@
 package com.project.samplecrud_sb.controller;
 
 import com.project.samplecrud_sb.model.entity.PostCommentEntity;
-import com.project.samplecrud_sb.model.request.postComment.PostCommentRequest;
+import com.project.samplecrud_sb.model.request.postComment.CreatePostCommentRequest;
+import com.project.samplecrud_sb.model.request.postComment.UpdatePostCommentRequest;
 import com.project.samplecrud_sb.model.response.postComment.PostCommentResponse;
+import com.project.samplecrud_sb.model.response.postComment.ShortPostCommentResponse;
 import com.project.samplecrud_sb.service.PostCommentService;
 import com.project.samplecrud_sb.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +27,9 @@ public class PostCommentController {
     }
 
     @PostMapping
-    public ResponseEntity<PostCommentResponse> create(@RequestBody PostCommentRequest res) throws Exception{
+    public ResponseEntity<ShortPostCommentResponse> create(@RequestBody CreatePostCommentRequest res) throws Exception{
         PostCommentEntity postComment = this.postCommentService.create(res);
-        return ResponseEntity.ok(PostCommentResponse.fromEntity(postComment));
+        return ResponseEntity.ok(ShortPostCommentResponse.fromEntity(postComment));
     }
 
     @GetMapping
@@ -35,5 +37,17 @@ public class PostCommentController {
         List<PostCommentResponse> postComments = this.postCommentService.findAll(postId).stream().map
                 (PostCommentResponse::fromEntity).toList();
         return ResponseEntity.ok(postComments);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ShortPostCommentResponse> update(@PathVariable Long id, @RequestBody UpdatePostCommentRequest req)throws Exception{
+        PostCommentEntity data = this.postCommentService.update(id,req);
+        return ResponseEntity.ok(ShortPostCommentResponse.fromEntity(data));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ShortPostCommentResponse> delete(@PathVariable Long id)throws Exception{
+        PostCommentEntity data = this.postCommentService.delete(id);
+        return ResponseEntity.ok(ShortPostCommentResponse.fromEntity(data));
     }
 }

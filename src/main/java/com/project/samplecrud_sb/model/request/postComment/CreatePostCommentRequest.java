@@ -5,7 +5,7 @@ import com.project.samplecrud_sb.model.entity.PostCommentEntity;
 
 import java.io.Serializable;
 
-public class PostCommentRequest implements Serializable {
+public class CreatePostCommentRequest implements Serializable {
 
     private String comment;
     private Long postId;

@@ -16,7 +16,7 @@ public class PostCommentEntity {
     private String comment;
 
     //many to one relational:
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id",nullable = false,referencedColumnName = "id")
     private PostEntity post;
 
