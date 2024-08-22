@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductsRepository extends JpaRepository<ProductsEntity,Long> {
-
+    //JPQL = Java persistence Queries Language
+    boolean existsByName(String name);
 }

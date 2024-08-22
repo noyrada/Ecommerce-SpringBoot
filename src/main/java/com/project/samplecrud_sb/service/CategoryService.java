@@ -30,7 +30,6 @@ public class CategoryService {
         //check name from request in database
         if (this.categoryRepository.existsByName(data.getName()))
             throw new AlreadyExistException("Category name already exists!");
-
         try {
             //save entity
             return this.categoryRepository.save(data);
@@ -47,7 +46,6 @@ public class CategoryService {
             -> new NotFoundException("Category not found!"));
 
         //Add request data into exist database:
-
         //#1. need give all field's value to update
        foundData.setName(request.getName());
        foundData.setDescription(request.getDescription());
@@ -66,7 +64,7 @@ public class CategoryService {
 
     // find all data from database:
     public List<CategoryEntity> findAll(){
-        return this.categoryRepository.findAll();
+        return this.categoryRepository.findAllByOrderByNameDesc();
     }
 
     // find One data from database by id:
@@ -86,7 +84,6 @@ public class CategoryService {
         }catch (Exception ex){
             throw new Exception(ex);
         }
-
         return category;
     }
 

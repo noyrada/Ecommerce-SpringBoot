@@ -36,6 +36,7 @@ public class CategoryController {
 
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> findAll(){
+
         List<CategoryResponse> category = this.categoryService.findAll().stream().map
                 (CategoryResponse::fromEntity).toList();
         return ResponseEntity.ok(category);
