@@ -22,3 +22,7 @@ spring:
 
     show-sql: true
     open-in-view: false
+
+springdoc:
+  api-docs:
+    enabled: true

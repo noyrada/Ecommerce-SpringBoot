@@ -2,7 +2,6 @@ package com.project.samplecrud_sb.repository;
 
 import com.project.samplecrud_sb.model.entity.CategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -41,5 +40,8 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity,Long> {
     //Sorting by Name: DESC
     @Query(value = "select c from Category c order by c.name desc ")
     List<CategoryEntity> findAllByOrderByNameDesc();
+
+
+//    //Pagination:
 
 }

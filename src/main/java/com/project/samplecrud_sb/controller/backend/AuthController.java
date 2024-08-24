@@ -1,6 +1,5 @@
-package com.project.samplecrud_sb.controller;
+package com.project.samplecrud_sb.controller.backend;
 
-import com.project.samplecrud_sb.exceptions.BadRequestException;
 import com.project.samplecrud_sb.model.entity.UserEntity;
 import com.project.samplecrud_sb.model.request.user.UserLoginRequest;
 import com.project.samplecrud_sb.model.request.user.UserRegisterRequest;

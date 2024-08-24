@@ -17,17 +17,23 @@ repositories {
     mavenCentral()
 }
 
-dependencies(({
-    //Spring Boot Data JPA
+dependencies{
+
+    //Spring Boot Data JPA:
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    //postgresql Database Driver
+    //Postgresql Database Driver:
     runtimeOnly 'org.postgresql:postgresql'
+
+    //OpenAPI Swagger:
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+    //Hibernate Validator:
+    implementation 'org.hibernate:hibernate-validator:8.0.1.Final'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-} as Closure))
+}
 
 tasks.named('test') {
     useJUnitPlatform()

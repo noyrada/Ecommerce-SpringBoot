@@ -1,4 +1,4 @@
-package com.project.samplecrud_sb.controller;
+package com.project.samplecrud_sb.controller.backend;
 
 import com.project.samplecrud_sb.model.entity.PostCommentEntity;
 import com.project.samplecrud_sb.model.request.postComment.CreatePostCommentRequest;

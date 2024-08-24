@@ -1,4 +1,4 @@
-package com.project.samplecrud_sb.controller;
+package com.project.samplecrud_sb.controller.backend;
 
 import com.project.samplecrud_sb.exceptions.NotFoundException;
 import com.project.samplecrud_sb.model.entity.UserEntity;
