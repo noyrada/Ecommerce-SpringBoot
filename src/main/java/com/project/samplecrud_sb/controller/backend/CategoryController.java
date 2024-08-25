@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryResponse> create(@RequestBody CategoryRequest request) throws Exception{
+    public ResponseEntity<CategoryResponse> create(@Valid @RequestBody CategoryRequest request) throws Exception{
         CategoryEntity category = this.categoryService.create(request);
         return ResponseEntity.ok(CategoryResponse.fromEntity(category));
     }

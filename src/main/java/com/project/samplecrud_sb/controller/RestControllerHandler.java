@@ -5,6 +5,8 @@ import com.project.samplecrud_sb.exceptions.BadRequestException;
 import com.project.samplecrud_sb.exceptions.NotFoundException;
 import com.project.samplecrud_sb.model.response.errors.ErrorResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -32,6 +34,16 @@ public class RestControllerHandler {
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException ex){
         ErrorResponse err = new ErrorResponse(ex.getMessage(),(short)400);
+        return ResponseEntity.status(400).body(err);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleBadRequestException(MethodArgumentNotValidException ex){
+        String message = "Invalid values!";
+        for(ObjectError err : ex.getBindingResult().getAllErrors()){
+            message = err.getDefaultMessage();
+        }
+        ErrorResponse err = new ErrorResponse(message,(short)400);
         return ResponseEntity.status(400).body(err);
     }
 
