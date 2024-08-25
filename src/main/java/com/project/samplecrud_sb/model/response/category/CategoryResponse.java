@@ -1,12 +1,19 @@
 package com.project.samplecrud_sb.model.response.category;
 
 import com.project.samplecrud_sb.model.entity.CategoryEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 
 public class CategoryResponse implements Serializable {
 
+    @Schema(example = "168")
     private Long id;
+
+    @Schema(example = "Best Category")
     private String name;
+
+    @Schema(example = "Best Category ever.")
     private String description;
 
     public CategoryResponse(Long id, String name, String description) {

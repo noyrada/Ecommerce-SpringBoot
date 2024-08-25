@@ -37,6 +37,7 @@ public class RestControllerHandler {
         return ResponseEntity.status(400).body(err);
     }
 
+    //modify in swagger:
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleBadRequestException(MethodArgumentNotValidException ex){
         String message = "Invalid values!";

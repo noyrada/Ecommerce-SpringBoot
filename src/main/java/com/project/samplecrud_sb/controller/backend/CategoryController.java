@@ -30,18 +30,36 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    //create category:
+    @Operation(summary = "Endpoint for admin create a category",description = "Admin can create a category by using this endpoint",
+            responses = {
+                    @ApiResponse(description = "Success",responseCode = "200", content = @Content(schema = @Schema(implementation = CategoryResponse.class),mediaType = "application/json")),
+                    @ApiResponse(description = "Error",responseCode = "400-500", content = @Content(schema = @Schema(implementation = ErrorResponse.class),mediaType = "application/json"))
+            })
     @PostMapping
     public ResponseEntity<CategoryResponse> create(@Valid @RequestBody CategoryRequest request) throws Exception{
         CategoryEntity category = this.categoryService.create(request);
         return ResponseEntity.ok(CategoryResponse.fromEntity(category));
     }
 
+    //update category:
+    @Operation(summary = "Endpoint for admin update a category",description = "Admin can update a category by using this endpoint",
+            responses = {
+                    @ApiResponse(description = "Success",responseCode = "200", content = @Content(schema = @Schema(implementation = CategoryResponse.class),mediaType = "application/json")),
+                    @ApiResponse(description = "Error",responseCode = "400-500", content = @Content(schema = @Schema(implementation = ErrorResponse.class),mediaType = "application/json"))
+            })
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryResponse> update(@PathVariable Long id, @RequestBody CategoryRequest request) throws Exception{
+    public ResponseEntity<CategoryResponse> update(@PathVariable Long id,@Valid @RequestBody CategoryRequest request) throws Exception{
         CategoryEntity category = this.categoryService.update(id,request);
         return ResponseEntity.ok(CategoryResponse.fromEntity(category));
     }
 
+    //find all categories:
+    @Operation(summary = "Endpoint for admin finding all categories",description = "Admin can finding all category by using this endpoint",
+            responses = {
+                    @ApiResponse(description = "Success",responseCode = "200", content = @Content(schema = @Schema(implementation = CategoryResponse.class),mediaType = "application/json")),
+                    @ApiResponse(description = "Error",responseCode = "400-500", content = @Content(schema = @Schema(implementation = ErrorResponse.class),mediaType = "application/json"))
+            })
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> findAll(){
 
@@ -50,6 +68,7 @@ public class CategoryController {
         return ResponseEntity.ok(category);
     }
 
+    //find one category:
     @Operation(summary = "Endpoint for admin finding a category",description = "Admin can find a category by id",
     responses = {
             @ApiResponse(description = "Success",responseCode = "200", content = @Content(schema = @Schema(implementation = CategoryResponse.class),mediaType = "application/json")),
@@ -61,6 +80,12 @@ public class CategoryController {
         return ResponseEntity.ok(CategoryResponse.fromEntity(category));
     }
 
+    //delete category:
+    @Operation(summary = "Endpoint for admin deleting a category",description = "Admin can deleting a category by using this endpoint",
+            responses = {
+                    @ApiResponse(description = "Success",responseCode = "200", content = @Content(schema = @Schema(implementation = CategoryResponse.class),mediaType = "application/json")),
+                    @ApiResponse(description = "Error",responseCode = "400-500", content = @Content(schema = @Schema(implementation = ErrorResponse.class),mediaType = "application/json"))
+            })
     @DeleteMapping("/{id}")
     public ResponseEntity<CategoryResponse> delete(@PathVariable Long id) throws Exception{
         CategoryEntity category = this.categoryService.delete(id);
