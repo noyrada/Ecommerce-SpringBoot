@@ -1,5 +1,6 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import jakarta.persistence.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -7,11 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class UserEntity extends BaseEntity {
 
     @Column(length = 255, nullable = false)
     private String username;
@@ -25,14 +22,6 @@ public class UserEntity {
 
     public void setAddress(AddressEntity address) {
         this.address = address;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {

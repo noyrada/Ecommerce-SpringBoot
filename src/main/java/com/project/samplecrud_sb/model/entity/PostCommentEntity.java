@@ -1,16 +1,13 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "post_comments")
-public class PostCommentEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class PostCommentEntity extends BaseEntity {
 
     @Column(nullable = false,length = 255)
     private String comment;
@@ -19,14 +16,6 @@ public class PostCommentEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id",nullable = false,referencedColumnName = "id")
     private PostEntity post;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getComment() {
         return comment;
@@ -49,11 +38,11 @@ public class PostCommentEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PostCommentEntity that = (PostCommentEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(comment, that.comment) && Objects.equals(post, that.post);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(comment, that.comment) && Objects.equals(post, that.post);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, comment, post);
+        return Objects.hash(getId(), comment, post);
     }
 }

@@ -1,5 +1,6 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -7,11 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "posts")
-public class PostEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class PostEntity extends BaseEntity {
 
     @Column(length = 50,nullable = false)
     private String title;
@@ -39,24 +36,16 @@ public class PostEntity {
         this.description = description;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PostEntity that = (PostEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(postComments, that.postComments);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(postComments, that.postComments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, postComments);
+        return Objects.hash(getId(), title, description, postComments);
     }
 }

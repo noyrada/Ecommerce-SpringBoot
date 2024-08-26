@@ -1,27 +1,16 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "tags")
-public class TagsEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class TagsEntity extends BaseEntity {
 
     @Column(length = 255,nullable = false,unique = true)
     private String name;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -36,11 +25,11 @@ public class TagsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TagsEntity that = (TagsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(getId(), name);
     }
 }

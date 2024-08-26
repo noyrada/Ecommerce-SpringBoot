@@ -1,5 +1,6 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import com.project.samplecrud_sb.model.entity.listener.CategoryEntityListener;
 import jakarta.persistence.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -9,21 +10,13 @@ import java.util.Objects;
 @Entity(name = "Category")
 @Table(name = "categories")
 @EntityListeners(CategoryEntityListener.class)
-public class CategoryEntity{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class CategoryEntity extends BaseEntity {
 
     @Column(nullable = false,length = 30,unique = true)
     private String name;
 
     @Column(length = 100)
     private String description;
-
-    public Long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -32,10 +25,6 @@ public class CategoryEntity{
     public String getDescription()
     {
         return description;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setName(String name) {

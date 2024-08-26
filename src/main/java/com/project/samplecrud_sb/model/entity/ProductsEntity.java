@@ -1,15 +1,13 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "products")
-public class ProductsEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ProductsEntity extends BaseEntity {
 
     @Column(length = 255,nullable = false)
     private String name;
@@ -26,14 +24,6 @@ public class ProductsEntity {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -57,11 +47,11 @@ public class ProductsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductsEntity that = (ProductsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(price, that.price);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(price, that.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price);
+        return Objects.hash(getId(), name, description, price);
     }
 }

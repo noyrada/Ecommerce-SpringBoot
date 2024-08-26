@@ -1,16 +1,13 @@
 package com.project.samplecrud_sb.model.entity;
 
+import com.project.samplecrud_sb.infrastructure.model.entity.BaseEntity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "order_details")
-public class OrderDetailsEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class OrderDetailsEntity extends BaseEntity {
 
     @Column(length = 100, nullable = false)
     private String productName;
@@ -24,14 +21,6 @@ public class OrderDetailsEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId",nullable = false,referencedColumnName = "id")
     private OrderEntity order;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getProductName() {
         return productName;
@@ -70,11 +59,11 @@ public class OrderDetailsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderDetailsEntity that = (OrderDetailsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(productName, that.productName) && Objects.equals(qty, that.qty) && Objects.equals(price, that.price);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(productName, that.productName) && Objects.equals(qty, that.qty) && Objects.equals(price, that.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, productName, qty, price);
+        return Objects.hash(getId(), productName, qty, price);
     }
 }
