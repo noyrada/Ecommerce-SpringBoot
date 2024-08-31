@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "post_comments")
-public class PostCommentEntity extends BaseEntity {
+public class PostCommentEntity extends BaseEntity<Long> {
 
     @Column(nullable = false,length = 255)
     private String comment;

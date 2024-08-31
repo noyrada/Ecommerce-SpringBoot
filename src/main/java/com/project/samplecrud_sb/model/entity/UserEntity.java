@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-public class UserEntity extends BaseEntity {
+public class UserEntity extends BaseEntity<Long> {
 
     @Column(length = 255, nullable = false)
     private String username;

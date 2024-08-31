@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "address")
-public class AddressEntity extends BaseEntity {
+public class AddressEntity extends BaseEntity<Long> {
 
     @Column(length = 100, nullable = false)
     private String address;

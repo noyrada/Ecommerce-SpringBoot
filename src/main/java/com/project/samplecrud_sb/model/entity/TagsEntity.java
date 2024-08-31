@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tags")
-public class TagsEntity extends BaseEntity {
+public class TagsEntity extends BaseEntity<Long> {
 
     @Column(length = 255,nullable = false,unique = true)
     private String name;

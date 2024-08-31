@@ -4,13 +4,14 @@ import com.project.samplecrud_sb.infrastructure.model.entity.BaseAuditEntity;
 import com.project.samplecrud_sb.model.entity.listener.CategoryEntityListener;
 import jakarta.persistence.*;
 import org.hibernate.proxy.HibernateProxy;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.Objects;
 
 @Entity(name = "Category")
 @Table(name = "categories")
 @EntityListeners(CategoryEntityListener.class)
-public class CategoryEntity extends BaseAuditEntity {
+public class CategoryEntity extends BaseAuditEntity<Long> {
 
     @Column(nullable = false,length = 30,unique = true)
     private String name;

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "order_details")
-public class OrderDetailsEntity extends BaseEntity {
+public class OrderDetailsEntity extends BaseEntity<Long> {
 
     @Column(length = 100, nullable = false)
     private String productName;
