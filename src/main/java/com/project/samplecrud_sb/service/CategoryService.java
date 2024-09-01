@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -80,7 +81,9 @@ public class CategoryService {
 
         try {
             //if everything well will delete
-            this.categoryRepository.deleteById(category.getId());
+            //this.categoryRepository.deleteById(category.getId());
+            category.setDeletedAt(new Date());
+            this.categoryRepository.save(category);
         }catch (Exception ex){
             throw new Exception(ex);
         }
