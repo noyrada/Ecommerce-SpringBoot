@@ -1,6 +1,5 @@
 package com.project.samplecrud_sb.service;
 
-import com.project.samplecrud_sb.exceptions.AlreadyExistException;
 import com.project.samplecrud_sb.model.entity.ProductsEntity;
 import com.project.samplecrud_sb.model.request.products.ProductsRequest;
 import com.project.samplecrud_sb.repository.ProductsRepository;

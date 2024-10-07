@@ -1,7 +1,6 @@
 package com.project.samplecrud_sb.service;
 
 import com.project.samplecrud_sb.exceptions.NotFoundException;
-import com.project.samplecrud_sb.model.entity.CategoryEntity;
 import com.project.samplecrud_sb.model.entity.PostEntity;
 import com.project.samplecrud_sb.model.request.post.PostRequest;
 import com.project.samplecrud_sb.repository.PostRepository;

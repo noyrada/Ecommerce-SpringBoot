@@ -101,9 +101,4 @@ public class UserService {
         return this.userRepository.findById(id).orElseThrow(()-> new
                 NotFoundException("Not found!"));
     }
-
-
-
-
-
 }
